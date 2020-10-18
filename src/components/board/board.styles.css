@@ -7,6 +7,5 @@
 	height: calc(100vh * 0.85);
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
-
 	background-color: burlywood;
 }
