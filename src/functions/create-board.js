@@ -1,4 +1,4 @@
-class Cell {
+export class Cell {
 	constructor(pos, piece) {
 		this.pos = pos;
 		this.piece = piece;
@@ -44,17 +44,14 @@ export const createBoard = (fenString) => {
 			cells.push(col + row); //e.g a1, b1, c1...
 		}
 	}
+
 	const board = [];
 	for (let i = 0; i < cells.length; i++) {
 		//'cells', and 'pieces' have the same length of 64
 		const cell = cells[i];
-		const piece = pieces[i];
+		const piece = pieces[pieces.length - i - 1];
 		board.push(new Cell(cell, piece));
 	}
 
 	return board;
 };
-
-console.log(
-	createBoard('rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1')
-);

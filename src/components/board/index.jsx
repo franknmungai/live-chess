@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './board.styles.css';
 import Cell from '../cell';
 
@@ -12,4 +13,7 @@ const Board = ({ cells }) => {
 	);
 };
 
+Board.prototype = {
+	cells: PropTypes.array.isRequired,
+};
 export default Board;
