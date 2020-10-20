@@ -8,14 +8,24 @@ const Game = () => {
 	const [fen, setFen] = useState(FEN);
 	const { current: chess } = useRef(new Chess(fen));
 	const [board, setBoard] = useState(createBoard(fen));
-
 	useEffect(() => {
 		setBoard(createBoard(fen));
 	}, [fen]);
 
+	const fromPos = useRef();
+
+	const makeMove = (pos) => {
+		const from = fromPos.current;
+		const to = pos;
+		chess.move({ from, to });
+		setFen(chess.fen());
+	};
+
+	const setFromPos = (pos) => (fromPos.current = pos);
+
 	return (
 		<div className="game">
-			<Board cells={board} />
+			<Board cells={board} makeMove={makeMove} setFromPos={setFromPos} />
 		</div>
 	);
 };
