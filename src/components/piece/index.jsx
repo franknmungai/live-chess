@@ -1,6 +1,5 @@
 import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
-
 import './piece-styles.css';
 
 const Piece = ({ name, pos, setFromPos }) => {
@@ -13,7 +12,7 @@ const Piece = ({ name, pos, setFromPos }) => {
 	try {
 		image = require(`../../assets/pieces/${imageName}.png`);
 	} catch (error) {
-		image = '';
+		image = require('../../assets/pieces/empty.png');
 	}
 
 	const handleDragStart = () => {
@@ -25,18 +24,15 @@ const Piece = ({ name, pos, setFromPos }) => {
 	const handleDragEnd = () => {
 		element.current.style.display = 'block';
 	};
-	const handleClick = () => console.log({ name, pos });
 	return (
-		<div
+		<img
 			className="piece"
-			style={{
-				background: `url(${image}) center center/cover`,
-			}}
+			src={image}
+			alt=""
 			draggable={true}
 			ref={element}
 			onDragStart={handleDragStart}
 			onDragEnd={handleDragEnd}
-			onClick={handleClick}
 		/>
 	);
 };
