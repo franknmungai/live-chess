@@ -49,7 +49,7 @@ export const createBoard = (fenString) => {
 	for (let i = 0; i < cells.length; i++) {
 		//'cells', and 'pieces' have the same length of 64
 		const cell = cells[i];
-		const piece = pieces[i]; //pieces[pieces.length - i - 1];
+		const piece = pieces[i];
 		board.push(new Cell(cell, piece));
 	}
 

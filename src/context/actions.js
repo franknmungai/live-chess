@@ -1,4 +1,4 @@
-export const actions = {
-	SET_FROM: 'SET_FROM', //starting point of the piece
-	SET_TO: 'SET_TO', //destination of the piece
+export const types = {
+	SET_POSSIBLE_MOVES: 'SET_POSSIBLE_MOVES',
+	CLEAR_POSSIBLE_MOVES: 'CLEAR_POSSIBLE_MOVES',
 };

@@ -1,13 +1,13 @@
 import React from 'react';
 import './App.css';
 import Game from './pages/Game';
-import { AppProvider } from './context';
+import { GameProvider } from './context/GameContext';
 
 function App() {
 	return (
-		<AppProvider>
-			<Game />;
-		</AppProvider>
+		<GameProvider>
+			<Game />
+		</GameProvider>
 	);
 }
 
