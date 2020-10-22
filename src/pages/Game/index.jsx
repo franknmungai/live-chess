@@ -16,6 +16,14 @@ const Game = () => {
 		setBoard(createBoard(fen));
 	}, [fen]);
 
+	useEffect(() => {
+		dispatch({
+			type: types.SET_TURN,
+			player: chess.turn(),
+			check: chess.in_check(),
+		});
+	}, [fen, dispatch, chess]);
+
 	const fromPos = useRef();
 
 	const makeMove = (pos) => {

@@ -15,10 +15,10 @@ const GameReducer = (state, action) => {
 				possibleMoves: getPositions(action.moves),
 			};
 		case types.CLEAR_POSSIBLE_MOVES:
-			return {
-				...state,
-				possibleMoves: [],
-			};
+			return { ...state, possibleMoves: [] };
+
+		case types.SET_TURN:
+			return { ...state, turn: action.player, check: action.check };
 		default:
 			return state;
 	}

@@ -3,6 +3,8 @@ import GameReducer from './GameReducer';
 
 const initialState = {
 	possibleMoves: [],
+	turn: 'w', //w or b
+	check: false, //true if the side to move (current turn) is in check.
 };
 
 export const GameContext = createContext(initialState);
