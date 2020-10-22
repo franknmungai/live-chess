@@ -19,7 +19,7 @@ const Piece = ({ name, pos, setFromPos }) => {
 		setFromPos(pos);
 		setTimeout(() => {
 			element.current.style.display = 'none';
-		}, 0);
+		}, 5);
 	};
 	const handleDragEnd = () => {
 		element.current.style.display = 'block';
