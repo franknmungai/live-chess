@@ -1,0 +1,58 @@
+.container {
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	position: relative;
+}
+
+.app-title {
+	margin: 1.5rem;
+	padding: 1rem;
+	background-color: #fff;
+	text-align: center;
+	color: rgb(56, 55, 55);
+	border-radius: 2.5rem;
+	position: absolute;
+	top: 12px;
+	left: 12px;
+	z-index: 2;
+	font-size: 1.2rem;
+	box-shadow: 0 0 20px 7px #fafafa;
+	cursor: pointer;
+	font-family: 'Krona One', sans-serif;
+}
+.app-title:hover {
+	animation: glow 1.5s infinite ease-in-out;
+}
+.flex {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.bg-img {
+	height: 100vh;
+	flex: 0.5;
+	width: 60vw;
+}
+
+.content {
+	flex: 0.5;
+	padding: 1.5rem;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	font-family: 'Grandstander', cursive;
+}
+
+@keyframes glow {
+	from {
+		box-shadow: 0 0 20px 5px #fafafa;
+	}
+	to {
+		box-shadow: 0 0 60px 5px #fafafa;
+	}
+}

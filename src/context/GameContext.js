@@ -5,6 +5,8 @@ const initialState = {
 	possibleMoves: [],
 	turn: 'w', //w or b
 	check: false, //true if the side to move (current turn) is in check.
+	gameOver: false,
+	status: '', //game over status
 };
 
 export const GameContext = createContext(initialState);
