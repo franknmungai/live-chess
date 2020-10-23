@@ -9,9 +9,7 @@ import GameOver from '../../components/gameover';
 const FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 
 const Game = () => {
-	const [fen, setFen] = useState(
-		'rnb1kbnr/pppp1ppp/8/4p3/5PPq/8/PPPPP2P/RNBQKBNR w KQkq - 1 3'
-	);
+	const [fen, setFen] = useState(FEN);
 	const { current: chess } = useRef(new Chess(fen));
 	const [board, setBoard] = useState(createBoard(fen));
 	const { dispatch, gameOver } = useContext(GameContext);
