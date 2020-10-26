@@ -18,6 +18,20 @@ const GameReducer = (state, action) => {
 			return { ...state, possibleMoves: [] };
 		case types.SET_TURN:
 			return { ...state, turn: action.player, check: action.check };
+		case types.SET_PLAYER:
+			return { ...state, playerName: action.name };
+		case types.SET_PLAYER_COLOR:
+			return { ...state, playerColor: action.color };
+		case types.SET_OPPONENT:
+			return { ...state, opponentName: action.name };
+		case types.SET_MESSAGE:
+			return { ...state, message: action.message };
+		case types.CLEAR_MESSAGE:
+			return { ...state, message: '' };
+		case types.SET_OPPONENT_MOVES:
+			return { ...state, opponentMoves: action.moves };
+		case types.CLEAR_OPPONENT_MOVES:
+			return { ...state, opponentMoves: [] };
 		case types.GAME_OVER:
 			return {
 				...state,

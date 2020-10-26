@@ -36,3 +36,8 @@
 		#eb7b6a 100%
 	);
 }
+
+.opponent-move {
+	background-image: linear-gradient(120deg, #c3f64b 0%, #5bf570 100%);
+	opacity: 0.85;
+}
