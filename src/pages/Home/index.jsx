@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory, useLocation } from 'react-router-dom';
+import qs from 'query-string';
 import Layout from '../../components/layout';
 import './home-styles.css';
 import ShareButtons from '../../components/share-buttons';
@@ -7,14 +9,23 @@ import Button from '../../components/button';
 const Form = () => {
 	const [name, setName] = useState('');
 	const [gameID, setGameID] = useState('');
+	const history = useHistory();
+	const location = useLocation();
+
+	const { id: inviteID } = qs.parse(location.search);
 
 	useEffect(() => {
+		if (inviteID) return setGameID(inviteID);
 		const id = Math.random().toString().replace('0.', '');
 		setGameID(id);
-	}, []);
+	}, [inviteID]);
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		if (!(name && gameID)) {
+			return;
+		}
+		history.push(`/game?name=${name}&id=${gameID}`);
 	};
 
 	return (
@@ -36,7 +47,7 @@ const Form = () => {
 					subject="Join me for a game of Chess on Stack Chess"
 				/>
 
-				<Button>Create</Button>
+				<Button onClick={handleSubmit}>Create</Button>
 			</form>
 		</div>
 	);
