@@ -1,14 +1,16 @@
 import React, { useState, useRef, useEffect, useContext } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import Chess from 'chess.js';
 import io from 'socket.io-client';
+import qs from 'query-string';
 import { createBoard } from '../../functions';
 import Board from '../../components/board';
 import { GameContext } from '../../context/GameContext';
 import { types } from '../../context/actions';
 import getGameOverState from '../../functions/game-over.js';
 import GameOver from '../../components/gameover';
-const FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 
+const FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 const socket = io('localhost:5000');
 
 const Game = () => {
@@ -17,14 +19,32 @@ const Game = () => {
 	const [board, setBoard] = useState(createBoard(fen));
 	const { dispatch, gameOver } = useContext(GameContext);
 
+	const location = useLocation();
+	const history = useHistory();
+	const playerName = useRef();
+	const gameID = useRef();
+
 	useEffect(() => {
 		setBoard(createBoard(fen));
 	}, [fen]);
 
 	useEffect(() => {
-		socket.emit('join', { name: 'Frank', gameID: '20' }, ({ error, color }) => {
-			console.log({ color });
-		});
+		const { id, name } = qs.parse(location.search);
+		playerName.current = name;
+		gameID.current = id;
+	}, [location.search]);
+
+	useEffect(() => {
+		socket.emit(
+			'join',
+			{ name: playerName.current, gameID: gameID.current },
+			({ error, color }) => {
+				if (error) {
+					history.push('/');
+				}
+				console.log({ color });
+			}
+		);
 		socket.on('welcome', ({ message, opponent }) => {
 			console.log({ message, opponent });
 		});
@@ -39,7 +59,7 @@ const Game = () => {
 		socket.on('message', ({ message }) => {
 			console.log({ message });
 		});
-	}, [chess]);
+	}, [chess, history]);
 
 	useEffect(() => {
 		const [gameOver, status] = getGameOverState(chess);
