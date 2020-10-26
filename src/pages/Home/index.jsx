@@ -41,13 +41,17 @@ const Form = () => {
 				/>
 				<div className="gameId">Game ID: {gameID}</div>
 				<hr />
-				<p className="invite">Invite your friend over</p>
-				<ShareButtons
-					shareText={`https://stack-chess.netlify.app?id=${gameID}`}
-					subject="Join me for a game of Chess on Stack Chess"
-				/>
+				{!inviteID && (
+					<React.Fragment>
+						<p className="invite">Invite your friend over</p>
+						<ShareButtons
+							shareText={`https://stack-chess.netlify.app?id=${gameID}`}
+							subject="Join me for a game of Chess on Stack Chess"
+						/>
+					</React.Fragment>
+				)}
 
-				<Button onClick={handleSubmit}>Create</Button>
+				<Button onClick={handleSubmit}>{inviteID ? 'Join' : 'Create'}</Button>
 			</form>
 		</div>
 	);

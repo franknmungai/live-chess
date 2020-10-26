@@ -1,11 +1,13 @@
-import React, { useRef } from 'react';
+import React, { useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
 import './piece-styles.css';
+import { GameContext } from '../../context/GameContext';
 
 const Piece = ({ name, pos, setFromPos }) => {
 	const color = name === name.toUpperCase() ? 'w' : 'b';
 	const imageName = color + name.toUpperCase();
 	const element = useRef();
+	const { playerColor } = useContext(GameContext);
 
 	let image;
 
@@ -29,7 +31,7 @@ const Piece = ({ name, pos, setFromPos }) => {
 			className="piece"
 			src={image}
 			alt=""
-			draggable={true}
+			draggable={color === playerColor}
 			ref={element}
 			onDragStart={handleDragStart}
 			onDragEnd={handleDragEnd}

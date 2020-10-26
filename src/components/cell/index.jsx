@@ -8,8 +8,9 @@ import { GameContext } from '../../context/GameContext';
 const Cell = ({ cell, index, makeMove, setFromPos }) => {
 	const light = isLightSquare(cell.pos, index);
 
-	const { possibleMoves, turn, check } = useContext(GameContext);
+	const { possibleMoves, turn, check, opponentMoves } = useContext(GameContext);
 	const isPossibleMove = possibleMoves.includes(cell.pos);
+	const isOpponentMove = opponentMoves.includes(cell.pos);
 
 	const color = cell.piece.toUpperCase() === cell.piece ? 'w' : 'b';
 
@@ -29,7 +30,7 @@ const Cell = ({ cell, index, makeMove, setFromPos }) => {
 			<div
 				className={`overlay ${isPossibleMove && 'possible-move'} ${
 					inCheck() && 'check'
-				}`}
+				} ${isOpponentMove && 'opponent-move'}`}
 			>
 				<Piece pos={cell.pos} name={cell.piece} setFromPos={setFromPos} />
 			</div>

@@ -1,0 +1,8 @@
+.game {
+	width: 100vw;
+	height: 100vh;
+	background: url(../../assets/background.jpg) center center/cover;
+	background-color: rgba(0, 0, 0, 0.5);
+	overflow: hidden;
+	position: relative;
+}

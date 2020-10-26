@@ -7,6 +7,11 @@ const initialState = {
 	check: false, //true if the side to move (current turn) is in check.
 	gameOver: false,
 	status: '', //game over status
+	playerName: '',
+	playerColor: '',
+	opponentName: '',
+	message: '',
+	opponentMoves: [],
 };
 
 export const GameContext = createContext(initialState);
