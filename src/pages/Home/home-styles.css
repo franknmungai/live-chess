@@ -1,0 +1,40 @@
+form {
+	width: 80%;
+	height: 100%;
+}
+
+.input {
+	width: 80%;
+	padding: 1.2rem 2rem;
+	outline: none;
+	border: 1px solid slateblue;
+	border-radius: 48px;
+	margin: 24px 0;
+	font-size: 18px;
+}
+
+.gameId {
+	background-color: #eaeaea;
+	color: slateblue;
+	border-radius: 48px;
+	padding: 1.2rem 2rem;
+	margin: 24px 0;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+.home-img {
+	width: 50%;
+	height: 100%;
+	left: 0;
+}
+
+hr {
+	margin: 24px 0;
+	font-size: 18px;
+}
+
+.share {
+	margin: 16px auto;
+	width: 50%;
+}

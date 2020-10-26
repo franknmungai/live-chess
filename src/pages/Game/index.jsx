@@ -25,7 +25,7 @@ const Game = () => {
 		socket.emit('join', { name: 'Frank', gameID: '20' }, ({ error, color }) => {
 			console.log({ color });
 		});
-		socket.on('Welcome', ({ message, opponent }) => {
+		socket.on('welcome', ({ message, opponent }) => {
 			console.log({ message, opponent });
 		});
 		socket.on('opponentJoin', ({ message, opponent }) => {
@@ -35,6 +35,9 @@ const Game = () => {
 		socket.on('opponentMove', ({ from, to }) => {
 			chess.move({ from, to });
 			setFen(chess.fen());
+		});
+		socket.on('message', ({ message }) => {
+			console.log({ message });
 		});
 	}, [chess]);
 
