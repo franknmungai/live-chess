@@ -63,10 +63,14 @@ hr {
 	.app-title {
 		padding: 0.5rem;
 		background: rgb(109, 65, 231);
-		box-shadow: 0 0 20px 7px rgb(160, 130, 243);
+		box-shadow: 0 0 12px 7px rgb(160, 130, 243);
 		color: rgb(255, 255, 255);
-		left: 100px;
-		top: -20px;
+		/* left: 100px; */
+		/* top: -20px; */
 		font-size: 14px;
+		margin: 0 auto;
+		position: fixed;
+		z-index: 1;
+		margin-bottom: 2.5rem;
 	}
 }
