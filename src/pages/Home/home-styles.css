@@ -38,3 +38,35 @@ hr {
 	margin: 16px auto;
 	width: 50%;
 }
+
+@media (max-width: 500px) {
+	.responsive {
+		display: none !important;
+	}
+
+	form {
+		width: 90vw;
+		margin: 0 auto;
+		margin-top: 1rem;
+		position: relative;
+		top: 2.5remrem;
+		left: 0;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	.title {
+		position: relative;
+		top: 2rem;
+		margin-bottom: 1rem;
+	}
+	.app-title {
+		padding: 0.5rem;
+		background: rgb(109, 65, 231);
+		box-shadow: 0 0 20px 7px rgb(160, 130, 243);
+		color: rgb(255, 255, 255);
+		left: 100px;
+		top: -20px;
+		font-size: 14px;
+	}
+}

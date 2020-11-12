@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import qs from 'query-string';
 import Layout from '../../components/layout';
-import './home-styles.css';
 import ShareButtons from '../../components/share-buttons';
 import Button from '../../components/button';
+import './home-styles.css';
 
 const Form = () => {
 	const [name, setName] = useState('');
@@ -30,7 +30,7 @@ const Form = () => {
 
 	return (
 		<div>
-			<h2>Play Chess with your friends online</h2>
+			<h2 className="title">Play Chess with your friends online</h2>
 			<form onSubmit={handleSubmit}>
 				<input
 					type="text"
@@ -58,7 +58,11 @@ const Form = () => {
 };
 const Home = () => {
 	const Image = () => (
-		<img src={require('../../assets/home.jpg')} alt="home" className="bg-img" />
+		<img
+			src={require('../../assets/home.jpg')}
+			alt="home"
+			className="bg-img responsive"
+		/>
 	);
 	return <Layout Content={Form} Image={Image} />;
 };

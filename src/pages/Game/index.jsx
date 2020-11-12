@@ -22,7 +22,7 @@ import './game-styles.css';
 import Player from '../../components/player';
 const FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 
-const socket = io('localhost:5000');
+const socket = io('https://chess-peer-server.herokuapp.com/');
 
 const Game = () => {
 	const [fen, setFen] = useState(FEN);
