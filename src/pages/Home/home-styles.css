@@ -59,6 +59,7 @@ hr {
 		position: relative;
 		top: 2rem;
 		margin-bottom: 1rem;
+		line-height: 1rem;
 	}
 	.app-title {
 		padding: 0.5rem;

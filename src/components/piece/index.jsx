@@ -1,7 +1,7 @@
 import React, { useRef, useContext } from 'react';
 import PropTypes from 'prop-types';
-import './piece-styles.css';
 import { GameContext } from '../../context/GameContext';
+import './piece-styles.css';
 
 const Piece = ({ name, pos, setFromPos }) => {
 	const color = name === name.toUpperCase() ? 'w' : 'b';
