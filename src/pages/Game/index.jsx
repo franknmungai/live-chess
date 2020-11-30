@@ -15,7 +15,7 @@ import {
 	setOpponentMoves,
 	clearOpponentMoves,
 } from '../../context/actions';
-import getGameOverState from '../../functions/game-over.js';
+import getGameOverState from '../../functions';
 import GameOver from '../../components/gameover';
 import Snackbar from '../../components/snackbar';
 import './game-styles.css';
