@@ -15,15 +15,19 @@ import {
 	setOpponentMoves,
 	clearOpponentMoves,
 } from '../../context/actions';
-import getGameOverState from '../../functions';
+import useSound from 'use-sound';
+import { getGameOverState } from '../../functions';
 import GameOver from '../../components/gameover';
 import Snackbar from '../../components/snackbar';
-import './game-styles.css';
 import Player from '../../components/player';
+import './game-styles.css';
+import click from '../../assets/audio/click.mp3';
+
 const FEN = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 
 const socket = io('https://chess-peer-server.herokuapp.com/');
 
+// const audio = new Audio('../../assets/audio/click.mp3');
 const Game = () => {
 	const [fen, setFen] = useState(FEN);
 	const { current: chess } = useRef(new Chess(fen));
@@ -40,6 +44,8 @@ const Game = () => {
 	const history = useHistory();
 	const playerName = useRef();
 	const gameID = useRef();
+	const audio = useRef();
+	const [playSound] = useSound(click);
 
 	useEffect(() => {
 		setBoard(createBoard(fen));
@@ -76,11 +82,12 @@ const Game = () => {
 			setFen(chess.fen());
 			dispatch(setMessage('Your Turn'));
 			dispatch(setOpponentMoves([from, to]));
+			playSound();
 		});
 		socket.on('message', ({ message }) => {
 			dispatch(setMessage(message));
 		});
-	}, [chess, history, dispatch]);
+	}, [chess, history, dispatch, playSound]);
 
 	useEffect(() => {
 		const [gameOver, status] = getGameOverState(chess);
@@ -97,11 +104,12 @@ const Game = () => {
 
 	const fromPos = useRef();
 
-	const makeMove = (pos) => {
+	const makeMove = async (pos) => {
 		const from = fromPos.current;
 		chess.move({ from, to: pos });
 		dispatch({ type: types.CLEAR_POSSIBLE_MOVES });
 		setFen(chess.fen());
+		playSound();
 		socket.emit('move', { gameID: gameID.current, from, to: pos });
 	};
 

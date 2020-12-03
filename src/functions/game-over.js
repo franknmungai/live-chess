@@ -3,7 +3,7 @@
  * @param {*} chess An instance of the current Chess object
  * @returns {[boolean, string]}
  */
-const getGameOverState = (chess) => {
+export const getGameOverState = (chess) => {
 	//Returns true if the game has ended via checkmate, stalemate, draw, threefold repetition, or insufficient material. Otherwise, returns false.
 	if (!chess.game_over()) {
 		return [false, ''];
